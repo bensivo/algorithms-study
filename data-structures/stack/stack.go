@@ -7,26 +7,27 @@ import (
 )
 
 type Stack struct {
-	items *linkedlist.LinkedList
+	// Many implementations of stacks use arrays, but we're using a linkedlist because insertion and removal (from head) is always constant time
+	ll *linkedlist.LinkedList
 }
 
 func New() *Stack {
 	return &Stack{
-		items: &linkedlist.LinkedList{},
+		ll: &linkedlist.LinkedList{},
 	}
 }
 
 func (s *Stack) Push(v int) {
-	s.items.Prepend(v)
+	s.ll.Prepend(v)
 }
 
 func (s *Stack) Pop() (int, error) {
-	if s.items.Head == nil {
+	if s.ll.Head == nil {
 		return 0, errors.New("stack is empty")
 	}
 
-	value := s.items.Head.Value
-	err := s.items.RemoveAt(0)
+	value := s.ll.Head.Value
+	err := s.ll.RemoveAt(0)
 	if err != nil {
 		return 0, err
 	}
@@ -35,5 +36,5 @@ func (s *Stack) Pop() (int, error) {
 }
 
 func (s *Stack) ToArray() []int {
-	return s.items.ToArray()
+	return s.ll.ToArray()
 }

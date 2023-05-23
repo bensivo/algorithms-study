@@ -1,0 +1,11 @@
+Standard algorithms to implement:
+
+Arrays and linkedlists
+- Basic linkedlist operations - insert, remove
+- reverse a linkedlist
+- binary search
+
+Trees:
+- binary search tree
+- min/max heap
+- trie
