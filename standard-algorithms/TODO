@@ -1,11 +1,11 @@
 Standard algorithms to implement:
 
-Arrays and linkedlists
-- Basic linkedlist operations - insert, remove
-- reverse a linkedlist
-- binary search
+huffman coding / decoding
 
-Trees:
-- binary search tree
-- min/max heap
-- trie
+knapsack problem - greedy solution 
+
+hamming distance - dynamic programming
+
+bfs
+dfs
+a*

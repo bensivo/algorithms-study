@@ -7,10 +7,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBinarySearch(t *testing.T) {
+func TestBinarySearch_0(t *testing.T) {
 	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	index, _ := binarysearch.BinarySearch(nums, 4)
 	assert.Equal(t, 3, index)
+}
+
+func TestBinarySearch_1(t *testing.T) {
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	index, _ := binarysearch.BinarySearch(nums, 8)
+	assert.Equal(t, 7, index)
 }
 
 func TestBinarySearch_NotFound(t *testing.T) {
