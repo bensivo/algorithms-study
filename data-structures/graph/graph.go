@@ -44,12 +44,10 @@ func (g *DirectedGraph) AddEdge(sourceName string, destName string, weight int) 
 	}
 
 	_, exists = g.Edges[sourceName][destName]
-	if !exists {
+	if exists {
 		return fmt.Errorf("edge %s->%s already exists", sourceName, destName)
 	}
 
-	edgesOfSource := g.Edges[sourceName]
-	edgesOfSource[destName] = weight
-
+	g.Edges[sourceName][destName] = weight
 	return nil
 }

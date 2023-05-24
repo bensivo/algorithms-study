@@ -16,13 +16,11 @@ func TestGraph(t *testing.T) {
 	g.AddNode("D")
 
 	g.AddEdge("A", "B", 1)
-	g.AddEdge("A", "C", 1)
+	g.AddEdge("A", "C", 2)
 	g.AddEdge("C", "D", 1)
 
-	assert.Equal(t, g.Edges["A"], map[string]int{
-		"B": 1,
-		"C": 1,
-	})
+	assert.Equal(t, 1, g.Edges["A"]["B"])
+	assert.Equal(t, 2, g.Edges["A"]["C"])
 }
 
 func TestGraph_DuplicateNode(t *testing.T) {

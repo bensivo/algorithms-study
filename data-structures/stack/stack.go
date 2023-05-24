@@ -17,24 +17,24 @@ func New() *Stack {
 	}
 }
 
-func (s *Stack) Push(v int) {
+func (s *Stack) Push(v string) {
 	s.ll.Prepend(v)
 }
 
-func (s *Stack) Pop() (int, error) {
+func (s *Stack) Pop() (string, error) {
 	if s.ll.Head == nil {
-		return 0, errors.New("stack is empty")
+		return "", errors.New("stack is empty")
 	}
 
 	value := s.ll.Head.Value
 	err := s.ll.RemoveAt(0)
 	if err != nil {
-		return 0, err
+		return "", err
 	}
 
 	return value, nil
 }
 
-func (s *Stack) ToArray() []int {
+func (s *Stack) ToArray() []string {
 	return s.ll.ToArray()
 }

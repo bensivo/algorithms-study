@@ -2,11 +2,10 @@ package linkedlist
 
 import (
 	"errors"
-	"fmt"
 )
 
 type Node struct {
-	Value int
+	Value string
 	Next  *Node
 }
 
@@ -16,7 +15,13 @@ type LinkedList struct {
 	// NOTE: if we added a pointer to the Tail, we could make Append O(1) instead of O(n). Addds a little complexity
 }
 
-func (l *LinkedList) Append(value int) {
+func New() *LinkedList {
+	return &LinkedList{
+		Head: nil,
+	}
+}
+
+func (l *LinkedList) Append(value string) {
 	if l.Head == nil {
 		l.Head = &Node{
 			Value: value,
@@ -36,7 +41,7 @@ func (l *LinkedList) Append(value int) {
 	}
 }
 
-func (l *LinkedList) Prepend(value int) {
+func (l *LinkedList) Prepend(value string) {
 	if l.Head == nil {
 		l.Head = &Node{
 			Value: value,
@@ -82,7 +87,7 @@ func (l *LinkedList) RemoveAt(index int) error {
 	return errors.New("out of bounds")
 }
 
-func (l *LinkedList) Remove(value int) error {
+func (l *LinkedList) Remove(value string) error {
 	if l.Head == nil {
 		return errors.New("value not found")
 	}
@@ -103,8 +108,8 @@ func (l *LinkedList) Remove(value int) error {
 	return errors.New("value not found")
 }
 
-func (ll *LinkedList) ToArray() []int {
-	arr := []int{}
+func (ll *LinkedList) ToArray() []string {
+	arr := []string{}
 
 	if ll.Head == nil {
 		return arr
@@ -127,12 +132,8 @@ func ReverseList(ll *LinkedList) {
 
 	curr = ll.Head
 	for curr != nil {
-		fmt.Println(curr.Value)
 		next = curr.Next
 
-		if prev != nil {
-			fmt.Printf("Setting %d.Next = %d", curr.Value, prev.Value)
-		}
 		curr.Next = prev
 		prev = curr
 		curr = next

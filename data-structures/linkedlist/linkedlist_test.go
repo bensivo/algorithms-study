@@ -9,107 +9,107 @@ import (
 
 func TestAppend(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	assert.Equal(t, []int{}, ll.ToArray())
+	assert.Equal(t, []string{}, ll.ToArray())
 
-	ll.Append(0)
-	assert.Equal(t, []int{0}, ll.ToArray())
+	ll.Append("A")
+	assert.Equal(t, []string{"A"}, ll.ToArray())
 
-	ll.Append(1)
-	assert.Equal(t, []int{0, 1}, ll.ToArray())
+	ll.Append("B")
+	assert.Equal(t, []string{"A", "B"}, ll.ToArray())
 }
 
 func TestPrepend(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	assert.Equal(t, []int{}, ll.ToArray())
+	assert.Equal(t, []string{}, ll.ToArray())
 
-	ll.Prepend(0)
-	assert.Equal(t, []int{0}, ll.ToArray())
+	ll.Prepend("A")
+	assert.Equal(t, []string{"A"}, ll.ToArray())
 
-	ll.Prepend(1)
-	assert.Equal(t, []int{1, 0}, ll.ToArray())
+	ll.Prepend("B")
+	assert.Equal(t, []string{"B", "A"}, ll.ToArray())
 }
 
 func TestRemove_Empty(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
 
-	err := ll.Remove(0)
+	err := ll.Remove("A")
 	assert.EqualError(t, err, "value not found")
 }
 
 func TestRemove_RemoveHead(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(0)
+	ll.Append("A")
 
-	ll.Remove(0)
-	assert.Equal(t, []int{}, ll.ToArray())
+	ll.Remove("A")
+	assert.Equal(t, []string{}, ll.ToArray())
 }
 
 func TestRemove_RemoveMiddle(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(0)
-	ll.Append(1)
-	ll.Append(2)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
-	ll.Remove(1)
-	assert.Equal(t, []int{0, 2}, ll.ToArray())
+	ll.Remove("B")
+	assert.Equal(t, []string{"A", "C"}, ll.ToArray())
 }
 
 func TestRemove_RemoveEnd(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(0)
-	ll.Append(1)
-	ll.Append(2)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
-	ll.Remove(2)
-	assert.Equal(t, []int{0, 1}, ll.ToArray())
+	ll.Remove("C")
+	assert.Equal(t, []string{"A", "B"}, ll.ToArray())
 }
 
 func TestRemove_NotFound(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(0)
-	ll.Append(1)
-	ll.Append(2)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
-	err := ll.Remove(3)
+	err := ll.Remove("D")
 	assert.EqualError(t, err, "value not found")
-	assert.Equal(t, []int{0, 1, 2}, ll.ToArray())
+	assert.Equal(t, []string{"A", "B", "C"}, ll.ToArray())
 }
 
 func TestRemoveAt_Begining(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(3)
-	ll.Append(6)
-	ll.Append(9)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
 	ll.RemoveAt(0)
-	assert.Equal(t, []int{6, 9}, ll.ToArray())
+	assert.Equal(t, []string{"B", "C"}, ll.ToArray())
 }
 
 func TestRemoveAt_Middle(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(3)
-	ll.Append(6)
-	ll.Append(9)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
 	ll.RemoveAt(1)
-	assert.Equal(t, []int{3, 9}, ll.ToArray())
+	assert.Equal(t, []string{"A", "C"}, ll.ToArray())
 }
 
 func TestRemoveAt_End(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(3)
-	ll.Append(6)
-	ll.Append(9)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
 	ll.RemoveAt(2)
-	assert.Equal(t, []int{3, 6}, ll.ToArray())
+	assert.Equal(t, []string{"A", "B"}, ll.ToArray())
 }
 
 func TestRemoveAt_OutOfBounds(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
-	ll.Append(3)
-	ll.Append(6)
-	ll.Append(9)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
 	err := ll.RemoveAt(5)
 	assert.EqualError(t, err, "out of bounds")
@@ -118,11 +118,11 @@ func TestRemoveAt_OutOfBounds(t *testing.T) {
 func TestReverse(t *testing.T) {
 	ll := &linkedlist.LinkedList{}
 
-	ll.Append(0)
-	ll.Append(1)
-	ll.Append(2)
+	ll.Append("A")
+	ll.Append("B")
+	ll.Append("C")
 
 	linkedlist.ReverseList(ll)
 
-	assert.Equal(t, []int{2, 1, 0}, ll.ToArray())
+	assert.Equal(t, []string{"C", "B", "A"}, ll.ToArray())
 }
