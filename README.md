@@ -23,7 +23,7 @@ In most cases, the solutions are implemented on golang. IMO, golang is low-level
 - [X] BFS
 - [ ] DFS
 - [ ] Dynamic programming
-	- [ ] longest common substring
+	- [X] longest common substring
 	- [ ] Levenshtein distance
 	- [ ] Hamming distance
     - [ ] 0-1 Knapsack
