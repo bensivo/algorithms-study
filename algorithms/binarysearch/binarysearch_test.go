@@ -3,7 +3,7 @@ package binarysearch_test
 import (
 	"testing"
 
-	"bensivo.com/leetcode/standard-algorithms/binarysearch"
+	"bensivo.com/leetcode/algorithms/binarysearch"
 	"github.com/stretchr/testify/assert"
 )
 
