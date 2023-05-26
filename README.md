@@ -24,8 +24,7 @@ In most cases, the solutions are implemented on golang. IMO, golang is low-level
 - [ ] DFS
 - [ ] Dynamic programming
 	- [X] longest common substring
-	- [ ] Levenshtein distance
-	- [ ] Hamming distance
+	- [X] Levenshtein distance
     - [ ] 0-1 Knapsack
     - [ ] coin change problem
     - [ ] Matrix chain multiplication
